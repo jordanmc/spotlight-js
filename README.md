@@ -1,2 +1,2 @@
 # spotlight-js
-JavaScript-based spotlight overlay for tutorials, with input blocking
+JavaScript-based spotlight overlay for tutorials, with input blocking.
