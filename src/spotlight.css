@@ -1,0 +1,48 @@
+/* Main spotlight style
+----------*/
+.spotlight-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	opacity: 0.8;
+	pointer-events: none;
+	z-index: 2000000;
+}
+
+/* Example pointer style
+----------*/
+@keyframes overlay-pointer-anim-top { 0% { margin-top: 0; } 50% { margin-top: -22px; } 100% { margin-top: 0; } }
+@keyframes overlay-pointer-anim-bottom { 0% { margin-top: -44px; } 50% { margin-top: -22px; } 100% { margin-top: -44px; } }
+@keyframes overlay-pointer-anim-left { 0% { margin-left: 6px; } 50% { margin-left: -16px; } 100% { margin-left: 6px; } }
+@keyframes overlay-pointer-anim-right { 0% { margin-left: -38px; } 50% { margin-left: -16px; } 100% { margin-left: -38px; } }
+
+.spotlight-overlay-pointer {
+	position: absolute;
+	width: 32px;
+	height: 45px;
+	margin-top: -22px;
+	margin-left: -16px;
+	pointer-events: none;
+	z-index: 2000010;
+	background: url('arrow.png') 0 0 no-repeat;
+}
+
+/* Overrides based on direction of pointer.
+ * TODO: Add all of the prefixed versions here. */
+.spotlight-overlay-pointer[data-dir="left"] {
+	transform: rotate(-90deg);
+	animation: overlay-pointer-anim-left 1s linear infinite;
+}
+.spotlight-overlay-pointer[data-dir="top"] {
+	transform: rotate(0deg);
+	animation: overlay-pointer-anim-top 1s linear infinite;
+}
+.spotlight-overlay-pointer[data-dir="right"] {
+	transform: rotate(90deg);
+	animation: overlay-pointer-anim-right 1s linear infinite;
+}
+.spotlight-overlay-pointer[data-dir="bottom"] {
+	transform: rotate(-180deg);
+	animation: overlay-pointer-anim-bottom 1s linear infinite;
+}

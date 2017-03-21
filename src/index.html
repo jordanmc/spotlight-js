@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Spotlight Example</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="spotlight.css" />
+	
+	<style>
+		body {
+			margin: 10px;
+		}
+		p {
+			width: 300px;
+			padding: 5px;
+			border: 1px solid black;
+			display: inline-block;
+			margin: 10px;
+		}		
+	</style>
+</head>
+
+<body>
+	<h1>Spotlight Example</h1>
+	<p>
+		This is an example if bringing up a spotlight overlay, and creating
+		a few absolute lights, along with some relative lights, which should
+		follow the position of their respective HTML elements.<br /><br />
+		<button id="start-demo" onclick="startDemo();">Click here to see a demo</button>
+	</p>
+	<p>
+		Input can be blocked too, with an optional whitelist.
+		You can't <a href="javascript:alert('This shouldn\'t work..')">click this</a>, but you should
+		be able to <a href="javascript:alert('It worked!')" id="pointer-target">click this one</a>.
+	</p>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="spotlight.js"></script>
+	
+	<script>
+		var overlay = Spotlight.createOverlay('tutorial-1', {
+			disableInput: true,
+			inputWhitelist: ['#pointer-target']
+		});
+
+		overlay.addLight(null, 100, 100, 100, 100);
+		overlay.addLight(null, 0, 5, 240, 80, $('#start-demo'));
+		overlay.addPointer(null, 0, 40, $('#pointer-target'));
+		overlay.addLight(null, 0, 0, 100, 100, $('#pointer-target'));
+
+		function startDemo() {
+			Spotlight.showOverlay('tutorial-1');
+			
+			window.setTimeout(function() {
+				Spotlight.hideOverlay('tutorial-1');
+			}, 10000);
+		}
+	</script>
+</body>
+
+</html>
